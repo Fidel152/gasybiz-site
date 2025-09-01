@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: url('https://i.imgur.com/5KXhXJn.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(13, 59, 22, 0.7);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+.logo-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.logo {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    display: block;
+    border-radius: 50%;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
+    will-change: transform;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Style personnalisé pour le select */
+select {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    /* Supprime la flèche par défaut sur Chrome/Safari */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Ajoute une flèche personnalisée en SVG */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 36px;
+}
+
+/* Pour cacher la flèche par défaut sur IE/Edge */
+select::-ms-expand {
+    display: none;
+}
+
+/* Style des options du select */
+select option {
+    background-color: #0d3b16;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+}
+
+select option:hover,
+select option:checked {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input:focus, 
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    background-color: rgba(76, 175, 80, 0.1);
+    transform: translateY(-1px);
+}
+
+#otherProductContainer {
+    margin-top: 15px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#otherProductContainer.show {
+    opacity: 1;
+    height: auto;
+    margin-top: 15px;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #4CAF50, #3d8b40);
+    color: white;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: block;
+    margin: 35px auto;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #3d8b40, #2e6b31);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.success-message {
+    text-align: center;
+    color: #a8d7a9;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    display: none;
+}
+
+/* Affichage des résultats */
+.results {
+    margin-top: 40px;
+    padding: 25px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 12px;
+    background-color: rgba(13, 59, 22, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.results h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+    padding-bottom: 12px;
+}
+
+.result-item {
+    margin-bottom: 14px;
+    padding: 12px;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+}
+
+.result-label {
+    font-weight: 600;
+    color: #a8d7a9;
+}
+
+.result-value {
+    color: #e0f7e0;
+    margin-left: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}

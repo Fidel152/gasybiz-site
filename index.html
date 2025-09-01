@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasybiz</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Logo GasyBiz" class="logo">
+            </div>
+            <h1>Gasybiz</h1>
+            <p class="subtitle">Enregistrez votre entreprise et vos produits malgaches</p>
+        </header>
+        
+        <!-- FORMULAIRE CONNECTÉ À FORMSPREE -->
+        <form id="producerForm" action="https://formspree.io/f/mpwjldeo" method="POST">
+            <div class="form-group">
+                <label for="producerName">Nom du producteur</label>
+                <input type="text" name="Nom du producteur" id="producerName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="companyName">Nom de l'entreprise / coopérative</label>
+                <input type="text" name="Entreprise" id="companyName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Localisation</label>
+                <input type="text" value="Antsiranana" readonly>
+                <input type="hidden" name="Ville" value="Antsiranana">
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Adresse / Quartier / Lieu-dit</label>
+                <input type="text" name="Quartier" id="address" placeholder="Ex: Quartier Ambondrona, près du marché central" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="productType">Type de produits</label>
+                <select id="productType" name="Type de produit" required>
+                    <option value="">Sélectionnez un type de produit</option>
+                    <option value="vanille">Vanille</option>
+                    <option value="café">Café</option>
+                    <option value="textile">Textile</option>
+                    <option value="artisanat">Artisanat</option>
+                    <option value="épices">Épices</option>
+                    <option value="fruits">Fruits exotiques</option>
+                    <option value="plantes médicinales">Plantes médicinales</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="otherProductContainer">
+                <label for="otherProduct">Précisez le type de produit</label>
+                <input type="text" id="otherProduct" placeholder="Entrez le type de produit">
+                <input type="hidden" name="Type de produit" id="finalProductType">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="Email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Numéro de téléphone</label>
+                <input type="tel" name="Téléphone" id="phone" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Envoyer</button>
+            
+            <div class="success-message" id="successMessage">
+                ✅ Envoyé avec succès !
+            </div>
+        </form>
+        
+        <!-- Affichage des informations -->
+        <div id="results" class="results">
+            <h2>Dernière inscription</h2>
+            <div id="resultsContent"></div>
+        </div>
+        
+        <footer>
+            &copy; 2023 Gasybiz. Promouvoir les produits malgaches avec passion.
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
