@@ -6,7 +6,7 @@
 }
 
 body {
-    background: url('https://i.imgur.com/5KXhXJn.jpg') no-repeat center center fixed;
+    background: url('fond.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
     line-height: 1.6;
@@ -241,4 +241,5 @@ footer {
     padding-top: 25px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+
 }
