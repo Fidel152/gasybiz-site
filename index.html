@@ -37,25 +37,40 @@
             
             <div class="form-group">
                 <label for="address">Adresse / Quartier / Lieu-dit</label>
-                <input type="text" name="Quartier" id="address" placeholder="Ex: SCAMA,Lazaret-nord,Batelage" required>
+                <input type="text" name="Quartier" id="address" placeholder="Ex: Quartier Ambondrona, près du marché central" required>
             </div>
             
             <div class="form-group">
-                <label for="productType">Type de produits</label>
-                <select id="productType" name="Type de produit" required>
-                    <option value="">Sélectionnez un type de produit</option>
-                    <option value="vanille">Vanille</option>
-                    <option value="café">Café</option>
+                <label for="category">Catégorie principale</label>
+                <select id="category" name="Catégorie principale" required>
+                    <option value="">Sélectionnez une catégorie</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="agroalimentaire">Agroalimentaire</option>
+                    <option value="élevage">Élevage</option>
+                    <option value="cosmétique">Cosmétique</option>
                     <option value="textile">Textile</option>
                     <option value="artisanat">Artisanat</option>
-                    <option value="épices">Épices</option>
-                    <option value="fruits">Fruits exotiques</option>
-                    <option value="plantes médicinales">Plantes médicinales</option>
+                    <option value="fruits-exotiques">Fruits exotiques</option>
+                    <option value="plantes-medicinales">Plantes médicinales</option>
+                    <option value="energie-renouvelable">Énergie renouvelable</option>
+                    <option value="eco-produit-recyclage">Éco-produit / Recyclage</option>
                     <option value="autre">Autre</option>
                 </select>
             </div>
             
-            <div class="form-group" id="otherProductContainer">
+            <!-- Sous-catégorie pour Agriculture -->
+            <div class="form-group" id="subCategoryContainer" style="display: none;">
+                <label for="subCategory">Type de produit agricole</label>
+                <select id="subCategory" name="Type de produit">
+                    <option value="">Sélectionnez un produit</option>
+                    <option value="café">Café</option>
+                    <option value="vanille">Vanille</option>
+                    <option value="épices">Épices</option>
+                </select>
+            </div>
+            
+            <!-- Champ "Autre" -->
+            <div class="form-group" id="otherProductContainer" style="display: none;">
                 <label for="otherProduct">Précisez le type de produit</label>
                 <input type="text" id="otherProduct" placeholder="Entrez le type de produit">
                 <input type="hidden" name="Type de produit" id="finalProductType">
@@ -91,6 +106,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
-
