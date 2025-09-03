@@ -94,47 +94,26 @@ input::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Style personnalisé pour le select */
 select {
     color: white;
     background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    /* Supprime la flèche par défaut sur Chrome/Safari */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    /* Ajoute une flèche personnalisée en SVG */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-image: url("image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 18px;
     padding-right: 36px;
 }
 
-/* Pour cacher la flèche par défaut sur IE/Edge */
-select::-ms-expand {
-    display: none;
-}
-
-/* Style des options du select */
 select option {
     background-color: #0d3b16;
     color: white;
     padding: 10px;
     font-size: 1rem;
-    border: none;
 }
 
-select option:hover,
-select option:checked {
-    background-color: #4CAF50;
-    color: white;
-}
-
-input:focus, 
 select:focus {
     outline: none;
     border-color: #4CAF50;
@@ -178,10 +157,6 @@ select:focus {
     background: linear-gradient(135deg, #3d8b40, #2e6b31);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.submit-btn:active {
-    transform: translateY(-1px);
 }
 
 .success-message {
@@ -241,5 +216,4 @@ footer {
     padding-top: 25px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-
 }
