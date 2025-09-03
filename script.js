@@ -1,5 +1,7 @@
-// Gestion du champ "Autre produit"
-const productTypeSelect = document.getElementById('productType');
+// Éléments du DOM
+const categorySelect = document.getElementById('category');
+const subCategoryContainer = document.getElementById('subCategoryContainer');
+const subCategorySelect = document.getElementById('subCategory');
 const otherProductContainer = document.getElementById('otherProductContainer');
 const otherProductInput = document.getElementById('otherProduct');
 const finalProductType = document.getElementById('finalProductType');
@@ -9,47 +11,47 @@ const successMessage = document.getElementById('successMessage');
 const resultsDiv = document.getElementById('results');
 const resultsContent = document.getElementById('resultsContent');
 
-// Gestion du select "Autre"
-productTypeSelect.addEventListener('change', function() {
-    if (this.value === 'autre') {
-        otherProductContainer.classList.add('show');
+// Gestion du changement de catégorie
+categorySelect.addEventListener('change', function () {
+    const category = this.value;
+
+    // Réinitialise
+    subCategoryContainer.style.display = 'none';
+    otherProductContainer.style.display = 'none';
+    finalProductType.value = '';
+
+    if (category === 'agriculture') {
+        subCategoryContainer.style.display = 'block';
+        finalProductType.value = subCategorySelect.value;
+    } else if (category === 'autre') {
+        otherProductContainer.style.display = 'block';
     } else {
-        otherProductContainer.classList.remove('show');
-        finalProductType.value = this.value;
+        finalProductType.value = category;
     }
 });
 
-otherProductInput.addEventListener('input', function() {
+// Gestion du sous-menu agriculture
+subCategorySelect.addEventListener('change', function () {
     finalProductType.value = this.value;
 });
 
-productTypeSelect.addEventListener('change', function() {
-    if (this.value !== 'autre') {
-        finalProductType.value = this.value;
-    }
+// Gestion du champ "Autre"
+otherProductInput.addEventListener('input', function () {
+    finalProductType.value = this.value;
 });
 
 // Soumission du formulaire
-form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Empêche le rechargement
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
     // Récupérer les valeurs
     const producerName = document.getElementById('producerName').value;
     const companyName = document.getElementById('companyName').value;
     const location = "Antsiranana";
     const address = document.getElementById('address').value;
-    const productType = document.getElementById('productType').value;
-    const otherProduct = document.getElementById('otherProduct').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
-
-    // Déterminer le type final
-    let finalProductTypeValue = productType;
-    if (productType === 'autre' && otherProduct) {
-        finalProductTypeValue = otherProduct;
-    } else if (productType === 'autre') {
-        finalProductTypeValue = 'Non précisé';
-    }
+    const productType = finalProductType.value;
 
     // Afficher les résultats
     resultsContent.innerHTML = `
@@ -71,7 +73,7 @@ form.addEventListener('submit', function(e) {
         </div>
         <div class="result-item">
             <span class="result-label">Type de produit:</span>
-            <span class="result-value">${finalProductTypeValue}</span>
+            <span class="result-value">${productType}</span>
         </div>
         <div class="result-item">
             <span class="result-label">Email:</span>
@@ -85,18 +87,17 @@ form.addEventListener('submit', function(e) {
 
     // Afficher le message de succès
     successMessage.style.display = 'block';
-
-    // Afficher la section résultats
     resultsDiv.style.display = 'block';
 
-    // Réinitialiser le formulaire après 2 secondes
+    // Réinitialiser après 2 secondes
     setTimeout(() => {
         form.reset();
-        otherProductContainer.classList.remove('show');
+        subCategoryContainer.style.display = 'none';
+        otherProductContainer.style.display = 'none';
         successMessage.style.display = 'none';
     }, 2000);
 
-    // Envoyer les données à Formspree
+    // Envoyer à Formspree
     const formData = new FormData(form);
     fetch(form.action, {
         method: 'POST',
@@ -104,13 +105,5 @@ form.addEventListener('submit', function(e) {
         headers: {
             'Accept': 'application/json'
         }
-    }).then(response => {
-        if (response.ok) {
-            console.log("Données envoyées à Formspree");
-        } else {
-            console.error("Erreur Formspree");
-        }
-    }).catch(error => {
-        console.error("Erreur réseau", error);
     });
 });
